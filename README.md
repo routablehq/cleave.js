@@ -139,7 +139,7 @@ class MyComponent extends React.Component {
         console.log(event.target.value);
 
         // namespaced raw value
-        console.log(event.target.cleaveRawValueCleave);
+        console.log(event.target.cleaveRawValue);
     }
 
     onCreditCardFocus(event) {
@@ -193,7 +193,7 @@ angular.module('app', ['cleave.js'])
     };
 
     $scope.model = {
-        cleaveRawValueCleave: ''
+        cleaveRawValue: ''
     };
 
     $scope.options = {
@@ -209,7 +209,7 @@ Then easily you can apply `cleave` directive to `input` field:
 
 ```html
 <div ng-controller="AppController">
-    <input ng-model="model.cleaveRawValueCleave" ng-whatever="..." type="text" placeholder="Enter credit card number"
+    <input ng-model="model.cleaveRawValue" ng-whatever="..." type="text" placeholder="Enter credit card number"
         cleave="options.creditCard"/>
 </div>
 ```
