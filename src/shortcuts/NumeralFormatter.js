@@ -29,11 +29,11 @@ NumeralFormatter.groupStyle = {
     thousand: 'thousand',
     lakh:     'lakh',
     wan:      'wan',
-    none:     'none'    
+    none:     'none'
 };
 
 NumeralFormatter.prototype = {
-    getRawValue: function (value) {
+    getCleaveRawValue: function (value) {
         return value.replace(this.delimiterRE, '').replace(this.numeralDecimalMark, '.');
     },
 
@@ -76,7 +76,7 @@ NumeralFormatter.prototype = {
         } else {
             partSignAndPrefix = partSign;
         }
-        
+
         partInteger = value;
 
         if (value.indexOf(owner.numeralDecimalMark) >= 0) {

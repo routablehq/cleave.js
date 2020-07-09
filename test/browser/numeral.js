@@ -6,7 +6,7 @@ describe('Numeral input field', function () {
             numeral: true
         });
 
-        cleave.setRawValue('1234.56');
+        cleave.setCleaveRawValue('1234.56');
         assert.equal(field.value, '1,234.56');
     });
 
@@ -16,7 +16,7 @@ describe('Numeral input field', function () {
             numeralDecimalScale: 4
         });
 
-        cleave.setRawValue('1.2345678');
+        cleave.setCleaveRawValue('1.2345678');
         assert.equal(field.value, '1.2345');
     });
 
@@ -27,7 +27,7 @@ describe('Numeral input field', function () {
             delimiter:          '.'
         });
 
-        cleave.setRawValue('1234.56');
+        cleave.setCleaveRawValue('1234.56');
         assert.equal(field.value, '1.234,56');
     });
 
@@ -37,7 +37,7 @@ describe('Numeral input field', function () {
             numeralThousandsGroupStyle: 'lakh'
         });
 
-        cleave.setRawValue('12345678.90');
+        cleave.setCleaveRawValue('12345678.90');
         assert.equal(field.value, '1,23,45,678.90');
     });
 
@@ -47,7 +47,7 @@ describe('Numeral input field', function () {
             numeralThousandsGroupStyle: 'wan'
         });
 
-        cleave.setRawValue('123456789.01');
+        cleave.setCleaveRawValue('123456789.01');
         assert.equal(field.value, '1,2345,6789.01');
     });
 
@@ -57,7 +57,7 @@ describe('Numeral input field', function () {
             numeralThousandsGroupStyle: 'none'
         });
 
-        cleave.setRawValue('123456789.01');
+        cleave.setCleaveRawValue('123456789.01');
         assert.equal(field.value, '123456789.01');
     });
 
@@ -67,7 +67,7 @@ describe('Numeral input field', function () {
             numeralPositiveOnly: true
         });
 
-        cleave.setRawValue('-1234.56');
+        cleave.setCleaveRawValue('-1234.56');
         assert.equal(field.value, '1,234.56');
     });
 
@@ -77,7 +77,7 @@ describe('Numeral input field', function () {
             stripLeadingZeroes:  false
         });
 
-        cleave.setRawValue('000,001.01');
+        cleave.setCleaveRawValue('000,001.01');
         assert.equal(field.value, '000,001.01');
     });
 });

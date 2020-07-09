@@ -49,7 +49,7 @@ var DefaultProperties = {
 
         // others
         target.swapHiddenInput = !!opts.swapHiddenInput;
-        
+
         target.numericOnly = target.creditCard || target.date || !!opts.numericOnly;
 
         target.uppercase = !!opts.uppercase;
@@ -58,7 +58,7 @@ var DefaultProperties = {
         target.prefix = (target.creditCard || target.date) ? '' : (opts.prefix || '');
         target.noImmediatePrefix = !!opts.noImmediatePrefix;
         target.prefixLength = target.prefix.length;
-        target.rawValueTrimPrefix = !!opts.rawValueTrimPrefix;
+        target.cleaveRawValueTrimPrefix = !!opts.cleaveRawValueTrimPrefix;
         target.copyDelimiter = !!opts.copyDelimiter;
 
         target.initValue = (opts.initValue !== undefined && opts.initValue !== null) ? opts.initValue.toString() : '';

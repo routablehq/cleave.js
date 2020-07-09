@@ -21,7 +21,7 @@ angular.module('cleave.js', [])
                         }
 
                         ngModelCtrl.$formatters.push(function (val) {
-                            $scope.instance.setRawValue(val);
+                            $scope.instance.setCleaveRawValue(val);
 
                             return $scope.instance.getFormattedValue();
                         });
@@ -31,7 +31,7 @@ angular.module('cleave.js', [])
                                 $scope.onValueChange()(newFormattedValue);
                             }
 
-                            return $scope.instance.getRawValue();
+                            return $scope.instance.getCleaveRawValue();
                         });
 
                         // Recreate cleave instance if any cleave options change

@@ -447,7 +447,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 
 	        owner.element.value = newValue;
-	        if (pps.swapHiddenInput) owner.elementSwapHidden.value = owner.getRawValue();
+	        if (pps.swapHiddenInput) owner.elementSwapHidden.value = owner.getCleaveRawValue();
 
 	        Util.setSelection(owner.element, endPos, pps.document, false);
 	        owner.callOnValueChanged();
@@ -461,7 +461,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            target: {
 	                name: owner.element.name,
 	                value: pps.result,
-	                rawValue: owner.getRawValue()
+	                cleaveRawValue: owner.getCleaveRawValue()
 	            }
 	        });
 	    },
@@ -474,7 +474,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        owner.onChange();
 	    },
 
-	    setRawValue: function (value) {
+	    setCleaveRawValue: function (value) {
 	        var owner = this, pps = owner.properties;
 
 	        value = value !== undefined && value !== null ? value.toString() : '';
@@ -489,23 +489,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	        owner.onInput(value);
 	    },
 
-	    getRawValue: function () {
+	    getCleaveRawValue: function () {
 	        var owner = this,
 	            pps = owner.properties,
 	            Util = Cleave.Util,
-	            rawValue = owner.element.value;
+	            cleaveRawValue = owner.element.value;
 
-	        if (pps.rawValueTrimPrefix) {
-	            rawValue = Util.getPrefixStrippedValue(rawValue, pps.prefix, pps.prefixLength, pps.result, pps.delimiter, pps.delimiters, pps.noImmediatePrefix, pps.tailPrefix, pps.signBeforePrefix);
+	        if (pps.cleaveRawValueTrimPrefix) {
+	            cleaveRawValue = Util.getPrefixStrippedValue(cleaveRawValue, pps.prefix, pps.prefixLength, pps.result, pps.delimiter, pps.delimiters, pps.noImmediatePrefix, pps.tailPrefix, pps.signBeforePrefix);
 	        }
 
 	        if (pps.numeral) {
-	            rawValue = pps.numeralFormatter.getRawValue(rawValue);
+	            cleaveRawValue = pps.numeralFormatter.getCleaveRawValue(cleaveRawValue);
 	        } else {
-	            rawValue = Util.stripDelimiters(rawValue, pps.delimiter, pps.delimiters);
+	            cleaveRawValue = Util.stripDelimiters(cleaveRawValue, pps.delimiter, pps.delimiters);
 	        }
 
-	        return rawValue;
+	        return cleaveRawValue;
 	    },
 
 	    getISOFormatDate: function () {
@@ -592,11 +592,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    thousand: 'thousand',
 	    lakh:     'lakh',
 	    wan:      'wan',
-	    none:     'none'    
+	    none:     'none'
 	};
 
 	NumeralFormatter.prototype = {
-	    getRawValue: function (value) {
+	    getCleaveRawValue: function (value) {
 	        return value.replace(this.delimiterRE, '').replace(this.numeralDecimalMark, '.');
 	    },
 
@@ -639,7 +639,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        } else {
 	            partSignAndPrefix = partSign;
 	        }
-	        
+
 	        partInteger = value;
 
 	        if (value.indexOf(owner.numeralDecimalMark) >= 0) {
@@ -1617,7 +1617,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        // others
 	        target.swapHiddenInput = !!opts.swapHiddenInput;
-	        
+
 	        target.numericOnly = target.creditCard || target.date || !!opts.numericOnly;
 
 	        target.uppercase = !!opts.uppercase;
@@ -1626,7 +1626,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        target.prefix = (target.creditCard || target.date) ? '' : (opts.prefix || '');
 	        target.noImmediatePrefix = !!opts.noImmediatePrefix;
 	        target.prefixLength = target.prefix.length;
-	        target.rawValueTrimPrefix = !!opts.rawValueTrimPrefix;
+	        target.cleaveRawValueTrimPrefix = !!opts.cleaveRawValueTrimPrefix;
 	        target.copyDelimiter = !!opts.copyDelimiter;
 
 	        target.initValue = (opts.initValue !== undefined && opts.initValue !== null) ? opts.initValue.toString() : '';

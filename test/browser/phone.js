@@ -6,17 +6,17 @@ describe('Phone number input field', function () {
     });
 
     it('should format fully matched input value', function () {
-        cleave.setRawValue('0416123456');
+        cleave.setCleaveRawValue('0416123456');
         assert.equal(field.value, '0416 123 456');
     });
 
     it('should format partially matched input value', function () {
-        cleave.setRawValue('0416123');
+        cleave.setCleaveRawValue('0416123');
         assert.equal(field.value, '0416 123');
     });
 
     it('should format input value with country code', function () {
-        cleave.setRawValue('+61416123');
+        cleave.setCleaveRawValue('+61416123');
         assert.equal(field.value, '+61 416 123');
     });
 
@@ -27,7 +27,7 @@ describe('Phone number input field', function () {
             phoneRegionCode: 'AU'
         });
 
-        cleave2.setRawValue('+61416123456');
+        cleave2.setCleaveRawValue('+61416123456');
         assert.equal(field.value, '+61 416 123 456');
     });
 });

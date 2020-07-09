@@ -2,27 +2,27 @@
 
 [Documentation](https://github.com/nosir/cleave.js/blob/master/doc/doc.md) > [JavaScript API](https://github.com/nosir/cleave.js/blob/master/doc/js-api.md) > Public methods
 
-- [getRawValue](#getrawvalue)
-- [setRawValue](#setrawvaluevalue)
+- [getCleaveRawValue](#getrawvalue)
+- [setCleaveRawValue](#setrawvaluevalue)
 - [getFormattedValue](#getformattedvalue)
 - [getISOFormatDate](#getisoformatdate)
 - [destroy](#destroy)
 - [setPhoneRegionCode](#setphoneregioncoderegioncode)
 
-### `.getRawValue()`
+### `.getCleaveRawValue()`
 
 Gets raw value without any format pattern or delimiter, normally you should pass over this value to model or backend.
 
 ```js
-cleave.getRawValue();
+cleave.getCleaveRawValue();
 ```
 
-### `.setRawValue(value)`
+### `.setCleaveRawValue(value)`
 
 Sets raw value, it will then apply formatting automatically.
 
 ```js
-cleave.setRawValue('5555444433332222');
+cleave.setCleaveRawValue('5555444433332222');
 ```
 
 ### `.getFormattedValue()`

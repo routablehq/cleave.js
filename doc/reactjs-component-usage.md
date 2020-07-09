@@ -70,7 +70,7 @@ class MyComponent extends React.Component {
     }
 
     onCreditCardChange(event) {
-        this.setState({creditCardRawValue: event.target.rawValue});
+        this.setState({creditCardRawValue: event.target.cleaveRawValue});
     }
 
     onCreditCardFocus(event) {
@@ -78,11 +78,11 @@ class MyComponent extends React.Component {
     }
 
     onPhoneChange(event) {
-        this.setState({phoneRawValue: event.target.rawValue});
+        this.setState({phoneRawValue: event.target.cleaveRawValue});
     }
 
     onCustomChange(event) {
-        this.setState({customRawValue: event.target.rawValue});
+        this.setState({customRawValue: event.target.cleaveRawValue});
     }
 
     render() {
@@ -161,7 +161,7 @@ var MyComponent = React.createClass({
         console.log(event.target.value);
 
         // raw value
-        console.log(event.target.rawValue);
+        console.log(event.target.cleaveRawValue);
     },
 
     render: function () {
@@ -206,9 +206,9 @@ As you can see, here you simply use `<Cleave/>` as a normal `<input/>` field
 
     Internally it interpolates native React `onChange` and `onKeyDown` events, does all the formatting magic and triggers the event callback.
 
-    The only thing getting added to the event object is the `rawValue` (delimiter stripped value) of the input field, that you might be interested in.
+    The only thing getting added to the event object is the `cleaveRawValue` (delimiter stripped value) of the input field, that you might be interested in.
 
-    In the example above, we get the `rawValue` and update its `state` in handler, eventually it will be passed to backend or `store` layer.
+    In the example above, we get the `cleaveRawValue` and update its `state` in handler, eventually it will be passed to backend or `store` layer.
 
 ## Advanced usage
 
@@ -245,7 +245,7 @@ Try to bind `value` with any state in your component can lead to unexpected beha
 While sometimes you might want to set / update the raw value, here is what you can do:
 
 - Pass `onInit` callback into component, which returns the cleave instance, then store it as a variable or in state.
-- Call `cleave.setRawValue('...')` to update the raw value.
+- Call `cleave.setCleaveRawValue('...')` to update the raw value.
 - `onChange` event will be triggered, from here you can grab the returned raw / formatted value and update your state.
 
 ```js
@@ -265,7 +265,7 @@ class MyComponent extends React.Component {
     }
 
     onCreditCardChange(event) {
-        this.setState({creditCardRawValue: event.target.rawValue});
+        this.setState({creditCardRawValue: event.target.cleaveRawValue});
     }
 
     onCreditCardInit(cleave) {
@@ -273,7 +273,7 @@ class MyComponent extends React.Component {
     }
 
     reset() {
-        this.state.creditCardCleave.setRawValue(Math.floor(5000 * Math.random()));
+        this.state.creditCardCleave.setCleaveRawValue(Math.floor(5000 * Math.random()));
     }
 
     render() {

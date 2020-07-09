@@ -240,7 +240,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    },
 
-	    setRawValue: function setRawValue(value) {
+	    setCleaveRawValue: function setCleaveRawValue(value) {
 	        var owner = this,
 	            pps = owner.properties;
 
@@ -262,22 +262,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	    },
 
-	    getRawValue: function getRawValue() {
+	    getCleaveRawValue: function getCleaveRawValue() {
 	        var owner = this,
 	            pps = owner.properties,
-	            rawValue = pps.result;
+	            cleaveRawValue = pps.result;
 
-	        if (pps.rawValueTrimPrefix) {
-	            rawValue = Util.getPrefixStrippedValue(rawValue, pps.prefix, pps.prefixLength, pps.result, pps.delimiter, pps.delimiters, pps.noImmediatePrefix, pps.tailPrefix, pps.signBeforePrefix);
+	        if (pps.cleaveRawValueTrimPrefix) {
+	            cleaveRawValue = Util.getPrefixStrippedValue(cleaveRawValue, pps.prefix, pps.prefixLength, pps.result, pps.delimiter, pps.delimiters, pps.noImmediatePrefix, pps.tailPrefix, pps.signBeforePrefix);
 	        }
 
 	        if (pps.numeral) {
-	            rawValue = pps.numeralFormatter ? pps.numeralFormatter.getRawValue(rawValue) : '';
+	            cleaveRawValue = pps.numeralFormatter ? pps.numeralFormatter.getCleaveRawValue(cleaveRawValue) : '';
 	        } else {
-	            rawValue = Util.stripDelimiters(rawValue, pps.delimiter, pps.delimiters);
+	            cleaveRawValue = Util.stripDelimiters(cleaveRawValue, pps.delimiter, pps.delimiters);
 	        }
 
-	        return rawValue;
+	        return cleaveRawValue;
 	    },
 
 	    getISOFormatDate: function getISOFormatDate() {
@@ -317,7 +317,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            owner.onInput(pps.prefix);
 	        }
 
-	        event.target.rawValue = owner.getRawValue();
+	        event.target.cleaveRawValue = owner.getCleaveRawValue();
 	        event.target.value = pps.result;
 
 	        owner.registeredEvents.onFocus(event);
@@ -329,7 +329,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var owner = this,
 	            pps = owner.properties;
 
-	        event.target.rawValue = owner.getRawValue();
+	        event.target.cleaveRawValue = owner.getCleaveRawValue();
 	        event.target.value = pps.result;
 
 	        owner.registeredEvents.onBlur(event);
@@ -351,7 +351,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        owner.onInput(event.target.value);
 
-	        event.target.rawValue = owner.getRawValue();
+	        event.target.cleaveRawValue = owner.getCleaveRawValue();
 	        event.target.value = pps.result;
 
 	        owner.registeredEvents.onChange(event);
@@ -1825,7 +1825,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	NumeralFormatter.prototype = {
-	    getRawValue: function getRawValue(value) {
+	    getCleaveRawValue: function getCleaveRawValue(value) {
 	        return value.replace(this.delimiterRE, '').replace(this.numeralDecimalMark, '.');
 	    },
 
@@ -2856,7 +2856,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        target.prefix = target.creditCard || target.date ? '' : opts.prefix || '';
 	        target.noImmediatePrefix = !!opts.noImmediatePrefix;
 	        target.prefixLength = target.prefix.length;
-	        target.rawValueTrimPrefix = !!opts.rawValueTrimPrefix;
+	        target.cleaveRawValueTrimPrefix = !!opts.cleaveRawValueTrimPrefix;
 	        target.copyDelimiter = !!opts.copyDelimiter;
 
 	        target.initValue = opts.initValue !== undefined && opts.initValue !== null ? opts.initValue.toString() : '';

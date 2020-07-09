@@ -391,7 +391,7 @@ Cleave.prototype = {
         }
 
         owner.element.value = newValue;
-        if (pps.swapHiddenInput) owner.elementSwapHidden.value = owner.getRawValue();
+        if (pps.swapHiddenInput) owner.elementSwapHidden.value = owner.getCleaveRawValue();
 
         Util.setSelection(owner.element, endPos, pps.document, false);
         owner.callOnValueChanged();
@@ -405,7 +405,7 @@ Cleave.prototype = {
             target: {
                 name: owner.element.name,
                 value: pps.result,
-                rawValue: owner.getRawValue()
+                cleaveRawValue: owner.getCleaveRawValue()
             }
         });
     },
@@ -418,7 +418,7 @@ Cleave.prototype = {
         owner.onChange();
     },
 
-    setRawValue: function (value) {
+    setCleaveRawValue: function (value) {
         var owner = this, pps = owner.properties;
 
         value = value !== undefined && value !== null ? value.toString() : '';
@@ -433,23 +433,23 @@ Cleave.prototype = {
         owner.onInput(value);
     },
 
-    getRawValue: function () {
+    getCleaveRawValue: function () {
         var owner = this,
             pps = owner.properties,
             Util = Cleave.Util,
-            rawValue = owner.element.value;
+            cleaveRawValue = owner.element.value;
 
-        if (pps.rawValueTrimPrefix) {
-            rawValue = Util.getPrefixStrippedValue(rawValue, pps.prefix, pps.prefixLength, pps.result, pps.delimiter, pps.delimiters, pps.noImmediatePrefix, pps.tailPrefix, pps.signBeforePrefix);
+        if (pps.cleaveRawValueTrimPrefix) {
+            cleaveRawValue = Util.getPrefixStrippedValue(cleaveRawValue, pps.prefix, pps.prefixLength, pps.result, pps.delimiter, pps.delimiters, pps.noImmediatePrefix, pps.tailPrefix, pps.signBeforePrefix);
         }
 
         if (pps.numeral) {
-            rawValue = pps.numeralFormatter.getRawValue(rawValue);
+            cleaveRawValue = pps.numeralFormatter.getCleaveRawValue(cleaveRawValue);
         } else {
-            rawValue = Util.stripDelimiters(rawValue, pps.delimiter, pps.delimiters);
+            cleaveRawValue = Util.stripDelimiters(cleaveRawValue, pps.delimiter, pps.delimiters);
         }
 
-        return rawValue;
+        return cleaveRawValue;
     },
 
     getISOFormatDate: function () {

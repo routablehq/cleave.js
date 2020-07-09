@@ -8,7 +8,7 @@ describe('Custom input field', function () {
             blocks: [3, 3, 3]
         });
 
-        cleave.setRawValue('123456789');
+        cleave.setCleaveRawValue('123456789');
         assert.equal(field.value, '123 456 789');
     });
 
@@ -19,7 +19,7 @@ describe('Custom input field', function () {
             delimiter: '|'
         });
 
-        cleave.setRawValue('123456');
+        cleave.setCleaveRawValue('123456');
         assert.equal(field.value, '123|456');
     });
 
@@ -29,7 +29,7 @@ describe('Custom input field', function () {
             delimiter: '|'
         });
 
-        cleave.setRawValue('123456789');
+        cleave.setCleaveRawValue('123456789');
         assert.equal(field.value, '123|456|789');
     });
 
@@ -39,7 +39,7 @@ describe('Custom input field', function () {
             delimiters: ['-', '-', '~']
         });
 
-        cleave.setRawValue('123456789000');
+        cleave.setCleaveRawValue('123456789000');
         assert.equal(field.value, '123-456-789~000');
     });
 
@@ -49,7 +49,7 @@ describe('Custom input field', function () {
             delimiters: ['(', ') ', ' - ']
         });
 
-        cleave.setRawValue('123456789000');
+        cleave.setCleaveRawValue('123456789000');
         assert.equal(field.value, '(123) 456 - 789');
     });
 
@@ -59,7 +59,7 @@ describe('Custom input field', function () {
             delimiters: ['-', '~']
         });
 
-        cleave.setRawValue('123456789000');
+        cleave.setCleaveRawValue('123456789000');
         assert.equal(field.value, '123-456~789~000');
     });
 
@@ -69,7 +69,7 @@ describe('Custom input field', function () {
             delimiter: ''
         });
 
-        cleave.setRawValue('123456789');
+        cleave.setCleaveRawValue('123456789');
         assert.equal(field.value, '123456789');
     });
 
@@ -80,7 +80,7 @@ describe('Custom input field', function () {
             delimiter: '-'
         });
 
-        cleave.setRawValue('UFO123');
+        cleave.setCleaveRawValue('UFO123');
         assert.equal(field.value, 'UFO-123');
     });
 
@@ -90,7 +90,7 @@ describe('Custom input field', function () {
             noImmediatePrefix: true
         });
 
-        cleave.setRawValue('1001');
+        cleave.setCleaveRawValue('1001');
         assert.equal(cleave.getFormattedValue(), 'GTM-1001');
     });
 
@@ -100,29 +100,29 @@ describe('Custom input field', function () {
             noImmediatePrefix: true
         });
 
-        cleave.setRawValue('');
+        cleave.setCleaveRawValue('');
         assert.equal(cleave.getFormattedValue(), 'GTM-');
     });
 
-    it('should not trim prefix when rawValueTrimPrefix is not enabled', function () {
+    it('should not trim prefix when cleaveRawValueTrimPrefix is not enabled', function () {
         var cleave = new Cleave(field, {
             prefix:             '$',
-            rawValueTrimPrefix: true,
+            cleaveRawValueTrimPrefix: true,
             numeral:            true
         });
 
-        cleave.setRawValue('1234.56');
-        assert.equal(cleave.getRawValue(), '1234.56');
+        cleave.setCleaveRawValue('1234.56');
+        assert.equal(cleave.getCleaveRawValue(), '1234.56');
     });
 
-    it('should trim prefix when rawValueTrimPrefix is enabled', function () {
+    it('should trim prefix when cleaveRawValueTrimPrefix is enabled', function () {
         var cleave = new Cleave(field, {
             prefix:  '$',
             numeral: true
         });
 
-        cleave.setRawValue('1234.56');
-        assert.equal(cleave.getRawValue(), '$1234.56');
+        cleave.setCleaveRawValue('1234.56');
+        assert.equal(cleave.getCleaveRawValue(), '$1234.56');
     });
 
     it('should use numeric only option', function () {
@@ -131,7 +131,7 @@ describe('Custom input field', function () {
             blocks:      [3, 3, 3]
         });
 
-        cleave.setRawValue('12a3b4c5');
+        cleave.setCleaveRawValue('12a3b4c5');
         assert.equal(field.value, '123 45');
     });
 
@@ -141,7 +141,7 @@ describe('Custom input field', function () {
             blocks:    [3, 3, 3]
         });
 
-        cleave.setRawValue('abcdef');
+        cleave.setCleaveRawValue('abcdef');
         assert.equal(field.value, 'ABC DEF ');
     });
 
@@ -151,7 +151,7 @@ describe('Custom input field', function () {
             blocks:    [3, 3, 3]
         });
 
-        cleave.setRawValue('ABCDEF');
+        cleave.setCleaveRawValue('ABCDEF');
         assert.equal(field.value, 'abc def ');
     });
 });

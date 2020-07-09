@@ -26,7 +26,7 @@ angular.module('app', ['cleave.js'])
     };
     
     $scope.model = {
-        rawValue: ''
+        cleaveRawValue: ''
     };
     
     $scope.options = {
@@ -40,7 +40,7 @@ Then easily you can apply `cleave` directive to `input` field:
 
 ```html
 <div ng-controller="AppController">
-    <input ng-model="model.rawValue" ng-whatever="..." type="text" placeholder="Enter credit card number"
+    <input ng-model="model.cleaveRawValue" ng-whatever="..." type="text" placeholder="Enter credit card number"
         cleave="options"/>
 </div>
 ```
@@ -71,7 +71,7 @@ angular.module('app', ['cleave.js'])
     
     $scope.model = {
         creditCardType: '',
-        rawValue: '',
+        cleaveRawValue: '',
         formattedValue: ''
     };
     
@@ -87,11 +87,11 @@ Then in your html:
 
 ```html
 <div ng-controller="AppController">
-    <input ng-model="model.rawValue" ng-whatever="..."
+    <input ng-model="model.cleaveRawValue" ng-whatever="..."
         type="text" placeholder="Enter credit card number"
         cleave="options" />
     
-    <p>raw (ng-model) value: {{model.rawValue}}</p>
+    <p>raw (ng-model) value: {{model.cleaveRawValue}}</p>
     <p>formatted value: {{model.formattedValue}}</p>
     <p>type: {{model.creditCardType}}</p>
 </div>

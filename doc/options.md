@@ -34,7 +34,7 @@
     - [delimiterLazyShow](#delimiterlazyshow)
     - [prefix](#prefix)
     - [noImmediatePrefix](#noimmediateprefix)
-    - [rawValueTrimPrefix](#rawvaluetrimprefix)
+    - [cleaveRawValueTrimPrefix](#rawvaluetrimprefix)
     - [numericOnly](#numericonly)
     - [uppercase](#uppercase)
     - [lowercase](#lowercase)
@@ -525,9 +525,9 @@ new Cleave('.my-input', {
 // $5
 ```
 
-### `rawValueTrimPrefix`
+### `cleaveRawValueTrimPrefix`
 
-A `Boolean` value indicates if to trim prefix in calling `getRawValue()` or getting `rawValue` in AngularJS or ReactJS component.
+A `Boolean` value indicates if to trim prefix in calling `getCleaveRawValue()` or getting `cleaveRawValue` in AngularJS or ReactJS component.
 
 **Default value**: `false`
 
@@ -535,7 +535,7 @@ A `Boolean` value indicates if to trim prefix in calling `getRawValue()` or gett
 new Cleave('.my-input', {
     numeral: true,
     prefix: '$',
-    rawValueTrimPrefix: true
+    cleaveRawValueTrimPrefix: true
 });
 ```
 
@@ -588,7 +588,7 @@ It returns an object, which has a target key, value is the formatted and raw inp
 new Cleave('.my-input', {
     creditCard: true,
     onValueChanged: function (e) {
-        // e.target = { value: '5100-1234', rawValue: '51001234' }
+        // e.target = { value: '5100-1234', cleaveRawValue: '51001234' }
     }
 });
 ```
